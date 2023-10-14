@@ -4,9 +4,9 @@ A hacker news app built in svelte
 
 TODO
 
-- [ ] Set up svelte
-- [ ] Set up tailwind
-- [ ] Set up daisy-ui
+- [x] Set up svelte
+- [x] Set up tailwind
+- [x] Set up daisy-ui
 - [ ] Get Data from hacker news api
 - [ ] Display data
 - [ ] Add comments
@@ -30,3 +30,19 @@ https://tailwindcss.com/docs/guides/sveltekit
 npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 npx tailwindcss init -p
 ```
+
+# Set up daisy-ui
+
+```bash
+npm i -D daisyui@latest
+```
+
+then add to tailwind.config.js
+
+```js
+plugins: [
+    require('daisyui'),
+],
+```
+
+Finally go to daisyui and make a theme. Paste it into the file above and check its working
