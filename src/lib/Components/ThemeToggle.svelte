@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { themeChange } from 'theme-change';
-  export let themes = ['light', 'hacker'];
+  export let themes = ['light', 'dark'];
 
   let theme: string | null;
   let themeString = themes.join(',');
