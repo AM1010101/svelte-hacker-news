@@ -1,4 +1,8 @@
 <script lang="ts">
+  import HnStory from '../lib/Components/HnStory.svelte';
+  import { fly } from 'svelte/transition';
+  import { cubicOut } from 'svelte/easing';
+
   import ThemeToggle from '../lib/Components/ThemeToggle.svelte';
 
   // create a story interface
@@ -13,11 +17,11 @@
     type: string;
     url: string;
   }
-
+  let paginationSive = 50;
   let itemsToLoad = 50;
 
   function loadMore() {
-    itemsToLoad += 50;
+    itemsToLoad += paginationSive;
   }
 
   let hnPromise = fetch(
@@ -31,19 +35,6 @@
     .catch((err) => {
       console.log('err', err);
     });
-
-  function hnStoryPromise(id: number) {
-    return fetch(
-      `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        return data as Story;
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
-  }
 </script>
 
 <div class="flex justify-between items-center p-2">
@@ -56,27 +47,18 @@
     <span class="loading loading-infinity loading-md" />
   {:then hn}
     <ul class="m-2">
-      {#each hn as storyId, i}
+      {#each hn as storyId, i (storyId)}
         {#if i < itemsToLoad}
-          <li class="mb-2">
-            <div class="p-2 card bg-accent rounded-sm">
-              {#await hnStoryPromise(storyId)}
-                <span class="loading loading-infinity loading-md" />
-              {:then story}
-                {#if story}
-                  <div class="font-bold text-black">
-                    <a href={story.url} target="_blank">
-                      {story.title}
-                    </a>
-                  </div>
-                  <div class="text-sm">
-                    by: {story.by} | score: {story.score}
-                  </div>
-                {/if}
-              {:catch error}
-                <p>{error.message}</p>
-              {/await}
-            </div>
+          <li
+            in:fly={{
+              y: 500,
+              duration: 300,
+              delay: (i - itemsToLoad + paginationSive) * 50,
+              easing: cubicOut,
+            }}
+            class="mb-2"
+          >
+            <HnStory {storyId} />
           </li>
         {/if}
       {/each}
