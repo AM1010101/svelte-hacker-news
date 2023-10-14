@@ -46,4 +46,5 @@ plugins: [
 ],
 ```
 
-Finally go to daisyui and make a theme. Paste it into the file above and check its working
+Finally go to daisyui and make a theme. Paste it into the file above and check its working.
+Theme changer is useful -> https://github.com/saadeghi/theme-change
