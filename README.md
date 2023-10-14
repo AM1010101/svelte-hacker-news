@@ -7,9 +7,10 @@ TODO
 - [x] Set up svelte
 - [x] Set up tailwind
 - [x] Set up daisy-ui
-- [ ] Get Data from hacker news api
+- [ ] Get Stories from hacker news api
 - [ ] Display data
 - [ ] Add comments
+- [ ] Deploy to Railway
 
 # Set up svelte
 

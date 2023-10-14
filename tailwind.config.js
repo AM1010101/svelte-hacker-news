@@ -6,8 +6,12 @@ export default {
   },
   daisyui: {
     themes: [
+      'light',
+      'dark',
+      'cupcake',
+      'bumblebee',
       {
-        mytheme: {
+        hacker: {
           primary: '#fb923c',
           secondary: '#fed7aa',
           accent: '#e5e7eb',
