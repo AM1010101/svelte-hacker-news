@@ -66,6 +66,7 @@
   {:catch error}
     <p>{error.message}</p>
   {/await}
+
   <div class="p-2 pt-0">
     <button
       class="btn btn-primary w-full"

@@ -3,7 +3,6 @@
   import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
 
-  // create a story interface
   interface Story {
     by: string;
     descendants: number;
@@ -47,9 +46,9 @@
           {story.title}
         </a>
       </div>
-      <div class="text-sm">
+      <a class="text-sm" href={'/story/' + story.id}>
         by: {story.by} | score: {story.score} | comments: {story.descendants}
-      </div>
+      </a>
     {/if}
   {:catch error}
     <p>{error.message}</p>
