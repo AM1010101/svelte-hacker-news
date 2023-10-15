@@ -28,7 +28,7 @@
           duration: 500,
           easing: cubicOut,
         }}
-        class="font-bold text-accent"
+        class="text-accent"
       >
         <a href={story.url} target="_blank">
           {story.title}

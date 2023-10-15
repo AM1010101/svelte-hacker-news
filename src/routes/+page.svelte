@@ -1,6 +1,5 @@
 <script lang="ts">
   import StoryList from '../lib/Components/StoryList.svelte';
-  import ThemeToggle from '../lib/Components/ThemeToggle.svelte';
   import {
     hnTopStorys,
     hnAskStorys,
@@ -31,11 +30,6 @@
     category = categoryFunctions[selectedCategory] || hnTopStorys;
   }
 </script>
-
-<div class="flex justify-between items-center p-2">
-  <h1 class="text-3xl font-bold underline">HN Stories</h1>
-  <ThemeToggle themes={['light', 'hacker']} />
-</div>
 
 <div class="flex flex-row tabs flex-1 justify-evenly">
   {#each categories as category (category)}
