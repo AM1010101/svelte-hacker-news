@@ -22,7 +22,7 @@
       <div class="collapse-title m-0 p-0 min-h-0">
         <div class="text-sm">
           <button
-            class="badge badge-neutral"
+            class="badge badge-outline badge-accent"
             on:click={toggleRelative}
           >
             {relative
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="collapse-content m-0 p-0 pb-0">
-        <div class=" text-accent">
+        <div class="pl-2 text-accent text-sm leading-tight">
           {@html kid.text}
         </div>
 
