@@ -1,7 +1,5 @@
 <script lang="ts">
-  import HnStory from '../lib/Components/HnStory.svelte';
-  import { fly } from 'svelte/transition';
-  import { cubicOut } from 'svelte/easing';
+  import StoryList from '../lib/Components/StoryList.svelte';
   import ThemeToggle from '../lib/Components/ThemeToggle.svelte';
   import {
     hnTopStorys,
@@ -56,23 +54,7 @@
   {#await category}
     <span class="loading loading-infinity loading-md" />
   {:then hn}
-    <ul class="m-2">
-      {#each hn as storyId, i (storyId)}
-        {#if i < itemsToLoad}
-          <li
-            in:fly={{
-              y: 500,
-              duration: 300,
-              delay: (i - itemsToLoad + paginationSive) * 50,
-              easing: cubicOut,
-            }}
-            class="mb-2"
-          >
-            <HnStory {storyId} />
-          </li>
-        {/if}
-      {/each}
-    </ul>
+    <StoryList {hn} {itemsToLoad} {paginationSive} />
   {:catch error}
     <p>{error.message}</p>
   {/await}
