@@ -2,21 +2,8 @@
   import HnStory from '../lib/Components/HnStory.svelte';
   import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
-
   import ThemeToggle from '../lib/Components/ThemeToggle.svelte';
 
-  // create a story interface
-  interface Story {
-    by: string;
-    descendants: number;
-    id: number;
-    kids: number[];
-    score: number;
-    time: number;
-    title: string;
-    type: string;
-    url: string;
-  }
   let paginationSive = 50;
   let itemsToLoad = 50;
 
