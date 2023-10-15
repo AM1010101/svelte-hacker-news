@@ -11,9 +11,9 @@ TODO
 - [x] Get Stories from hacker news api
 - [x] Display data
 - [x] Add comments
-- [ ] Animations
 - [x] Curated Lists (ShowHN etc)
-- [ ] Favourites (local to browser)
+- [x] Favourites (local to browser)
+- [ ] Animations
 - [ ] Containerise
 - [ ] Deploy to Railway
 
