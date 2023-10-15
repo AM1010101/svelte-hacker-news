@@ -2,30 +2,16 @@
   export let storyId: number;
   import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
+  import {
+    parseDate,
+    parseDateRelative,
+  } from '$lib/Components/utils';
+  import { hnStoryPromise } from '$lib/Components/hnPromise';
 
-  interface Story {
-    by: string;
-    descendants: number;
-    id: number;
-    kids: number[];
-    score: number;
-    time: number;
-    title: string;
-    type: string;
-    url: string;
-  }
+  let relative = true;
 
-  function hnStoryPromise(id: number) {
-    return fetch(
-      `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        return data as Story;
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
+  function toggleRelative() {
+    relative = !relative;
   }
 </script>
 
@@ -46,8 +32,19 @@
           {story.title}
         </a>
       </div>
+      <div>
+        by: {story.by}
+        <button
+          class="badge badge-outline badge-accent"
+          on:click={toggleRelative}
+        >
+          {relative
+            ? parseDateRelative(story.time)
+            : parseDate(story.time)}
+        </button>
+      </div>
       <a class="text-sm" href={'/story/' + story.id}>
-        by: {story.by} | score: {story.score} | comments: {story.descendants}
+        score: {story.score} | comments: {story.descendants}
       </a>
     {/if}
   {:catch error}
